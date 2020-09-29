@@ -48,20 +48,64 @@ function generatePassword(){
   var password = " ";
 
 
-  // Determining password if all true
-  if (uppercase === true && lowercase === true && numbers === true && symbols === true) {
-      for (var i = 0; i = passwordLength; i++) {
-        var upperRandom = upperValues[Math.floor(Math.random() * (upperValues.length))];
-        var lowerRandom = lowerValues[Math.floor(Math.random() * (lowerValues.length))];
-        var numericRandom = numeric[Math.floor(Math.random() * (numeric.length))];
-        var symbolRandom = symbolValues[Math.floor(Math.random() * (symbolValues.length))];
-        
-        var password = password.concat(upperRandom, lowerRandom, numericRandom, symbolRandom);
-      
-      return password;
-    }
+  var upperRandom = upperValues[Math.floor(Math.random() * (upperValues.length - 1))];
+  var lowerRandom = lowerValues[Math.floor(Math.random() * (lowerValues.length - 1))];
+  var numericRandom = numeric[Math.floor(Math.random() * (numeric.length - 1))];
+  var symbolRandom = symbolValues[Math.floor(Math.random() * (symbolValues.length - 1))];
 
+  // Determining password if all true
+  for (var i = 0; i < passwordLength; i++) {
+    if (uppercase === true && lowercase === true && numbers === true && symbols === true) {
+        password = upperRandom.concat(lowerRandom, numericRandom, symbolRandom);
+
+  // If one is false      
+    } else if (uppercase === true && lowercase === true && numbers === true && symbols === false) {
+        password = upperRandom.concat(lowerRandom, numericRandom);
+
+    } else if (uppercase === true && lowercase === true && numbers === false && symbols === true) {
+        password = upperRandom.concat(lowerRandom, symbolRandom);
+    
+    } else if (uppercase === true && lowercase === false && numbers === true && symbols === true) {
+      password = upperRandom.concat(numericRandom, symbolRandom);
+        
+    } else if (uppercase === false && lowercase === true && numbers === true && symbols === true) {
+      password = lowerRandom.concat(numericRandom, symbolRandom);
+
+  // If two are false
+    } else if (uppercase === false && lowercase === false && numbers === true && symbols === true) {
+      password = numericRandom.concat(symbolRandom);
+
+    } else if (uppercase === false && lowercase === true && numbers === false && symbols === true) {
+      password = lowerRandom.concat(symbolRandom);
+
+    } else if (uppercase === false && lowercase === true && numbers === true && symbols === false) {
+      password = lowerRandom.concat(numericRandom);
+
+    } else if (uppercase === true && lowercase === true && numbers === false && symbols === false) {
+      password = upperRandom.concat(lowerRandom);
+
+    } else if (uppercase === true && lowercase === false && numbers === true && symbols === false) {
+      password = upperRandom.concat(numericRandom);
+
+    } else if (uppercase === true && lowercase === false && numbers === false && symbols === true) {
+      password = UpperRandom.concat(symbolRandom);
+    
+    // If only one is true
+    } else if (uppercase === true && lowercase === false && numbers === false && symbols === false) {
+      password = upperRandom;
+
+    } else if (uppercase === false && lowercase === true && numbers === false && symbols === false) {
+      password = lowerRandom;
+
+    } else if (uppercase === false && lowercase === false && numbers === true && symbols === false) {
+      password = numericRandom;
+
+    } else if (uppercase === false && lowercase === false && numbers === false && symbols === true) 
+      password = symbolRandom;
+
+    }
+    return password;
 
   }
-}
+
 
