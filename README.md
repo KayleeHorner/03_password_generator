@@ -9,5 +9,5 @@ https://kayleehorner.github.io/03_password_generator/
 
 ## Screenshot
 
-![Javascript password generator](/Assets/03_project_screenshot.png "Javascript password generator screenshot")
+![Javascript password generator](Assets/03_project_screenshot.png "Javascript password generator screenshot")
 
